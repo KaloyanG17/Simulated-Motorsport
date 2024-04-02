@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulated Racing | Race </title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Cambria',Georgia,serif;
+        }
+
+        #start-button-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.5;
+        }
+
+        #start-button-container:hover {
+            opacity: 1.0;
+        }
+
+        #start-button-container button {
+            text-decoration: none;
+            background-color: #333;
+            color: #fff;
+            margin: 10px;
+            font-size: 24px;
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        #start-button-container button:hover {
+            background-color: #fff;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Leaderboard section -->
+    <div id="leaderboard" style="position: absolute; top: 10px; left: 10px; color: white; font-size: small;"></div>
+    <!-- Start button -->
+    <div id="start-button-container" style="position: absolute; top: 200px; left: 50%; transform: translateX(-50%);">
+        <button id="start-btn">Start Race</button>
+    </div>
+    <!-- Zoom-in and zoom-out button section -->
+    <div id="buttons-container"
+        style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: lightgrey; padding: 2px; border-radius: 10px;">
+        <button id="zoom-out-btn" style="border-radius: 10px;">-</button>
+        <button id="zoom-in-btn" style="border-radius: 10px;">+</button>
+    </div>
+    <!-- Link to race script -->
+    <script src="./src/race.js" type="module"></script>
+</body>
+
+</html>
