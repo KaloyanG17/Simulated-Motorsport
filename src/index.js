@@ -45,7 +45,7 @@ const loader = new GLTFLoader();
 let carModel;
 
 // Model car 1 
-loader.load('./src/assets/carMerc.glb', (gltf) => {
+loader.load('./assets/carMerc.glb', (gltf) => {
   carModel = gltf.scene;
   scene.add(carModel);
 
@@ -68,7 +68,7 @@ const loader2 = new GLTFLoader();
 let carModel2;
 
 // Model car 2
-loader2.load('./src/assets/carRB.glb', (gltf) => {
+loader2.load('./assets/carRB.glb', (gltf) => {
   carModel2 = gltf.scene;
   scene.add(carModel2);
 
@@ -115,7 +115,7 @@ dracoLoader.setDecoderPath('/node_modules/three/examples/jsm/libs/draco/');
 loader1.setDRACOLoader( dracoLoader );
 
 
-loader1.load(`./src/assets/track2.glb`, function (gltf) {
+loader1.load(`./assets/track2.glb`, function (gltf) {
   const model = gltf.scene;
   model.position.set(0, -4, 202);
   model.receiveShadow = true;
