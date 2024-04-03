@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import * as YUKA from 'yuka';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
-import { track2, track2Pit } from './src/pages/trackPaths.js';
+import { track2, track2Pit } from '../trackPaths.js';
 import * as brain from 'brain.js';
 import data from './trained_network.json';
 
