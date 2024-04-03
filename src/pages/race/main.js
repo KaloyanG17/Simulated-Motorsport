@@ -520,7 +520,7 @@ function createYukaCar({ maxSpeed, pitSpeed, team, startPos, model, track, tyre 
   const loader1 = new GLTFLoader();
 
   // Load the 3D model of the car
-  loader1.load(`./assets/${model}`, function (glb) {
+  loader1.load(`../assets/${model}`, function (glb) {
     const model = glb.scene;
     // Set the car color based on the team color (constructor) 
     model.traverse(function (child) {
