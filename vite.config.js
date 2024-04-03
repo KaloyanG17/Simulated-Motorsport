@@ -1,5 +1,13 @@
-import { defineConfig } from 'vite'
+// vite.config.js
+const { resolve } = require('path')
 
-export default defineConfig({
-
-})
+module.exports = {
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        admin: resolve(__dirname, 'race/index.html')
+      }
+    }
+  }
+}
