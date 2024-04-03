@@ -46,7 +46,7 @@ const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/');
 
 loader.setDRACOLoader( dracoLoader );
-loader.load(`./assets/${MODEL}`, function (gltf) {
+loader.load(`../assets/${MODEL}`, function (gltf) {
   const model = gltf.scene;
   scene.add(model);
 });
