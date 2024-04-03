@@ -61,6 +61,7 @@
          margin-bottom: 10px;
          margin-left: 20px;
       }
+
       .back-button {
          position: absolute;
          top: 20px;
@@ -85,10 +86,10 @@
 </head>
 
 <body>
-      <!-- Back button -->
-      <div class="back-button">
-         <a href="javascript:history.back()">Back</a>
-      </div>
+   <!-- Back button -->
+   <div class="back-button">
+      <a href="javascript:history.back()">Back</a>
+   </div>
    <!-- Title -->
    <h1>Simulated Racing - Info</h1>
 
@@ -118,6 +119,15 @@
       </ul>
    </div>
    </div>
+   <!-- Speed Insights and Insights scripts from Vercel -->
+   <script>
+      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+   </script>
+   <script defer src="/_vercel/speed-insights/script.js"></script>
+   <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+   </script>
+   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 
 </html>

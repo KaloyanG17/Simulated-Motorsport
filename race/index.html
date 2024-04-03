@@ -9,7 +9,7 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Cambria',Georgia,serif;
+            font-family: 'Cambria', Georgia, serif;
         }
 
         #start-button-container {
@@ -58,6 +58,15 @@
     </div>
     <!-- Link to race script -->
     <script src="/src/pages/race/main.js" type="module"></script>
+    <!-- Speed Insights and Insights scripts from Vercel -->
+    <script>
+        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 
 </html>
