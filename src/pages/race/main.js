@@ -49,7 +49,7 @@ const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('/node_modules/three/examples/jsm/libs/draco/');
  
 loader.setDRACOLoader( dracoLoader );
-loader.load(`./assets/${MODEL}`, function (gltf) {
+loader.load(`../assets/${MODEL}`, function (gltf) {
   const model = gltf.scene;
   scene.add(model);
 });
