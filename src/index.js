@@ -110,7 +110,7 @@ moveCamera();
 const loader1 = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
  
-dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/*');
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/');
  
 loader1.setDRACOLoader( dracoLoader );
 
