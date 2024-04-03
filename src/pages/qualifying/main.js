@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import * as YUKA from 'yuka';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
-import { track2, track2Pit } from './trackPaths.js';
+import { track2, track2Pit } from '..trackPaths.js';
 
 // Global variables
 const TRACK = track2;
@@ -43,8 +43,8 @@ scene.add(directionalLight);
 // Load the GLTF model of the track
 const loader = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('/node_modules/three/examples/jsm/libs/draco/');
- 
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/');
+
 loader.setDRACOLoader( dracoLoader );
 loader.load(`./assets/${MODEL}`, function (gltf) {
   const model = gltf.scene;
