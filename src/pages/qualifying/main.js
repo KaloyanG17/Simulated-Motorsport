@@ -255,7 +255,7 @@ function createYukaCar({ maxSpeed, minSpeed, team, startPos, model, track }) {
   // Setup vehicle render component
   const loader1 = new GLTFLoader();
 
-  loader1.load(`./assets/${model}`, function (glb) {
+  loader1.load(`../assets/${model}`, function (glb) {
     const model = glb.scene;
     model.traverse(function (child) {
       if (child.isMesh) {
