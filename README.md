@@ -5,5 +5,13 @@ Furthermore, a user interface would be implemented so the user can see the race 
 This should create a software where users can observe AI making real-time decisions and observe the differences that are made in real-life choices in motorsport races
 
 # Running
-npx parcel ./src/index.html 
+npm install
+
+npm install --save-dev vite   
+npm install --save-dev three
+npm install --save-dev yuka 
+npm install --save-dev brain.js
+npm install --save-dev rebuild   
+
+npx vite
 
