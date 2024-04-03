@@ -46,7 +46,7 @@ scene.add(directionalLight);
 // Load the GLTF model of the track
 const loader = new GLTFLoader();
 const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('/node_modules/three/examples/jsm/libs/draco/');
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/');
  
 loader.setDRACOLoader( dracoLoader );
 loader.load(`../assets/${MODEL}`, function (gltf) {
