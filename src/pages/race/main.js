@@ -3,12 +3,13 @@ import * as THREE from 'three';
 import * as YUKA from 'yuka';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
-import { track2, track2Pit } from '../trackPaths.js';
+import * as track from '../trackPaths.js';
 import * as brain from 'brain.js';
 import data from './trained_network.json';
 
 // Global variables
-const TRACK = track2;
+const TRACK = track.path2;
+const track2Pit = track.path2Pit;
 const MODEL = 'track2.glb';
 const CAR = 'car.glb';
 
