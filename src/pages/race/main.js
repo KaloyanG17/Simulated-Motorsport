@@ -9,7 +9,7 @@ import data from './trained_network.json';
 
 // Global variables
 const TRACK = track.path2;
-const track2Pit = track.path2Pit;
+const PITSTOP = track.pit;
 const MODEL = 'track2.glb';
 const CAR = 'car.glb';
 
@@ -157,7 +157,7 @@ function pitStopDecision(vehicle) {
     }
     if (!vehicle.pitstop) {
       // Add the pitstop path to the vehicle
-      for (let point of track2Pit) {
+      for (let point of PITSTOP) {
         vehicle.path.add(new YUKA.Vector3(point.x, point.y, point.z));
       }
       vehicle.pitstop = true;
@@ -274,7 +274,7 @@ function animate() {
       const threshold = 5;
 
       // Check if the vehicle is in the pitstop
-      const startPosition = new YUKA.Vector3(track2Pit[0].x, track2Pit[0].y, track2Pit[0].z);
+      const startPosition = new YUKA.Vector3(PITSTOP[0].x, PITSTOP[0].y, PITSTOP[0].z);
       if (vehicle.position.distanceTo(startPosition) < threshold && !vehicle.inPit) {
         vehicle.maxSpeed = vehicle.pitSpeed;
         vehicle.inPit = true;
@@ -282,7 +282,7 @@ function animate() {
       }
 
       // Check if the vehicle is close to the ending point of the pitstop
-      const endPosition = new YUKA.Vector3(track2Pit[track2Pit.length - 1].x, track2Pit[track2Pit.length - 1].y, track2Pit[track2Pit.length - 1].z);
+      const endPosition = new YUKA.Vector3(PITSTOP[PITSTOP.length - 1].x, PITSTOP[PITSTOP.length - 1].y, PITSTOP[PITSTOP.length - 1].z);
       if (vehicle.position.distanceTo(endPosition) < threshold && !vehicle.outPit) {
         vehicle.maxSpeed = vehicle.speedForPit;
         vehicle.path.clear(); // Clear the current path
