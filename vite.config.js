@@ -10,6 +10,8 @@ module.exports = {
         qualifying: resolve(__dirname, 'qualifying/index.html'),
         info: resolve(__dirname, 'info/index.html'),
         indexLow: resolve(__dirname, 'indexLow/index.html'),
+        track: resolve(__dirname, 'track/index.html'),
+        mapping: resolve(__dirname, 'mapping/index.html'),
       }
     }
   }

@@ -3,10 +3,11 @@ import * as THREE from 'three';
 import * as YUKA from 'yuka';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
-import { track2, track2Pit } from '../trackPaths.js';
+import * as track from '../trackPaths.js';
 
 // Global variables
-const TRACK = track2;
+const TRACK = track.path4;
+const REMOVE = track.toRemove4;
 const MODEL = 'track2.glb';
 const CAR = 'car.glb';
 
@@ -48,6 +49,16 @@ dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5
 loader.setDRACOLoader( dracoLoader );
 loader.load(`../assets/${MODEL}`, function (gltf) {
   const model = gltf.scene;
+  let childRemove = []
+  model.traverse(function (child) {
+    if (REMOVE.includes(child.name)){
+      console.log(child.name)
+      childRemove.push(child);
+    }
+  });
+  childRemove.forEach((child) => {
+    child.removeFromParent();
+  });
   scene.add(model);
 });
 // Vehicle setup
