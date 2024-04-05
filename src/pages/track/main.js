@@ -1,25 +1,62 @@
+import * as THREE from 'three';
 import * as track from '../trackPaths.js'
 
-const map1 = document.querySelector('.map');
-let prevPoint;
-track.path1.forEach(point => {
-   const pointElem = document.createElement('div');
-   pointElem.classList.add('point');
-   pointElem.style.left = `${point.x}px`;
-   pointElem.style.top = `${point.z}px`;
-   map1.appendChild(pointElem);
+function renderTrack(mapId, pathData) {
+   const scene = new THREE.Scene();
 
-   if (prevPoint) {
-      const line = document.createElement('div');
-      line.classList.add('line');
-      const distance = Math.sqrt(Math.pow(prevPoint.x - point.x, 2) + Math.pow(prevPoint.z - point.z, 2));
-      const angle = Math.atan2(point.z - prevPoint.z, point.x - prevPoint.x) * 180 / Math.PI;
-      line.style.width = `${distance}px`;
-      line.style.transform = `rotate(${angle}deg)`;
-      line.style.left = `${prevPoint.x}px`;
-      line.style.top = `${prevPoint.z}px`;
-      map1.appendChild(line);
-   }
+   // Catch the canvas element 
+   const renderer = new THREE.WebGLRenderer({
+      canvas: document.querySelector(mapId),
+   });
 
-   prevPoint = point;
-});
+   // Set the pixel ratio
+   renderer.setPixelRatio(window.devicePixelRatio);
+   renderer.setSize(650, 250);
+
+   // Setup camera
+   const camera = new THREE.PerspectiveCamera(
+      10,
+      500 / 200, // Aspect ratio based on canvas size
+      0.1,
+      2000
+   );
+
+   // Setup Camera position
+   camera.position.set(0, 1000, 1000);
+   camera.lookAt(scene.position);
+
+   // Setup lights
+   const ambientLight = new THREE.AmbientLight(0x333333);
+   scene.add(ambientLight);
+
+   const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1);
+   directionalLight.position.set(0, 1, 0);
+   scene.add(directionalLight);
+   renderer.setClearColor(0x000000);
+
+   // Create the path lines
+   const path = new THREE.Path();
+   pathData.forEach(point => {
+      path.lineTo(-point.x, point.z);
+   });
+   path.lineTo(-pathData[0].x, pathData[0].z);
+   // path.closePath();
+   const points = path.getPoints();
+   points.splice(0, 1);
+
+
+   const geometry = new THREE.BufferGeometry().setFromPoints(points);
+   const material = new THREE.LineBasicMaterial({ color: 0xffffff });
+
+   const line = new THREE.Line(geometry, material);
+   line.position.y = 125;
+   scene.add(line);
+
+   renderer.render(scene, camera);
+}
+
+// Call the function with canvas ID and path data
+renderTrack('#map1', track.path1);
+renderTrack('#map2', track.path2);
+renderTrack('#map3', track.path3);
+renderTrack('#map4', track.path4);

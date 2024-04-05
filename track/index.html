@@ -36,30 +36,13 @@
       p,
       ul {
          color: #fff;
-         font-size: 48px;
+         font-size: 28px;
          display: inline-block;
          padding: 10px;
          border: 2px solid #fff;
          border-radius: 8px;
          background-color: #333;
          margin: 20px 0;
-      }
-
-      .description p {
-         font-size: 18px !important;
-         width: 50%;
-      }
-
-      h2 {
-         font-size: 24px;
-         margin-bottom: 10px;
-      }
-
-      .rules li {
-         font-size: 16px;
-         line-height: 1.6;
-         margin-bottom: 10px;
-         margin-left: 20px;
       }
 
       .back-button {
@@ -83,66 +66,95 @@
          color: #333;
       }
 
-      .map-card {
-         width: 500px;
-         border: 1px solid #ccc;
+      .map-container {
+         height: 800px;
+      }
+
+      #path1 {
+         width: 700px;
+         height: 350px;
+         display: inline-grid;
+      }
+
+      #path2 {
+         width: 700px;
+         height: 350px;
+         display: inline-grid;
+      }
+
+      #path3 {
+         width: 700px;
+         height: 350px;
+         display: inline-grid;
+      }
+
+      #path4 {
+         width: 700px;
+         height: 350px;
+         display: inline-grid;
+      }
+
+      canvas {
+         border: 1px solid #fff;
          border-radius: 5px;
-         margin: 10px;
-         padding: 10px;
-      }
-      .map {
-         width: 100%;
-         height: 200px; /* Adjust height as needed */
-         background-color: #f0f0f0;
-         position: relative;
-      }
-      .point {
-         width: 5px;
-         height: 5px;
-         background-color: red;
-         border-radius: 50%;
-         position: absolute;
-      }
-      .line {
-         position: absolute;
-         border-bottom: 2px solid red;
       }
    </style>
 </head>
-<body>
 
 <body>
-   <!-- Back button -->
-   <div class="back-button">
-      <a href="javascript:history.back()">Back</a>
-   </div>
-   <!-- Title -->
-   <h1>Select The Track</h1>
 
-   <div class="map-card">
-      <h2>Track Path 1</h2>
-      <div class="map">
+   <body>
+      <!-- Back button -->
+      <div class="back-button">
+         <a href="javascript:history.back()">Back</a>
       </div>
-    </div>
-    
+      <!-- Title -->
+      <h1>Select The Track</h1>
 
-   <!-- 2D background image -->
-   <div id="vehicle-container">
-      <img src="/home.png" alt="home" style="width: 100%; height: 100%; object-fit: cover;">
-   </div>
+      <div class="map-container">
+         <div id="path1">
+            <h2>Track Path 1</h2>
+            <a href="../race/index.html?track=path1">
+               <div class="map">
+                  <canvas id="map1"></canvas>
+               </div>
+            </a>
+         </div>
+         <div id="path2">
+            <h2>Track Path 2</h2>
+            <a href="../race/index.html?track=path2">
+               <div class="map">
+                  <canvas id="map2"></canvas>
+               </div>
+            </a>
+         </div>
+         <div id="path3">
+            <h2>Track Path 3</h2>
+            <a href="../race/index.html?track=path3">
+               <div class="map">
+                  <canvas id="map3"></canvas>
+               </div>
+            </a>
+         </div>
+         <div id="path4">
+            <h2>Track Path 4</h2>
+            <a href="../race/index.html?track=path4">
+               <div class="map">
+                  <canvas id="map4"></canvas>
+               </div>
+            </a>
+         </div>
+      </div>
 
-   <!-- Link to JavaScript file -->
-   <script src="/src/pages/track/main.js" type="module"></script>
-   <!-- Speed Insights and Insights scripts from Vercel -->
-   <script>
-      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-   </script>
-   <script defer src="/_vercel/speed-insights/script.js"></script>
-   <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-   </script>
-   <script defer src="/_vercel/insights/script.js"></script>
-</body>
+
+      <!-- 2D background image -->
+      <div id="vehicle-container">
+         <img src="/home.png" alt="home" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+
+      <!-- Link to JavaScript file -->
+      <script src="/src/pages/track/main.js" type="module"></script>
+   </body>
 
 </html>
 

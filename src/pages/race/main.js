@@ -7,8 +7,41 @@ import * as track from '../trackPaths.js';
 import * as brain from 'brain.js';
 import data from './trained_network.json';
 
-// Global variables
-const TRACK = track.path2;
+// Get the search string from the URL
+const searchString = window.location.search;
+
+// Remove the '?' from the search string
+const searchParamsString = searchString.slice(1);
+
+// Split the search parameters string into an array of key-value pairs
+const searchParamsArray = searchParamsString.split('&');
+
+// Create an object to store the parameters
+const params = {};
+
+// Iterate through the array and split each key-value pair
+searchParamsArray.forEach(param => {
+    const [key, value] = param.split('=');
+    params[key] = value;
+});
+
+// Now you can access each parameter using the keys in the params object
+const trackUrl = params['track'];
+
+if(trackUrl == "path1"){
+  var TRACK = track.path1;
+  var REMOVE = track.toRemove1;
+} else if(trackUrl == "path2"){
+  var TRACK = track.path2;
+  var REMOVE = track.toRemove2;
+} else if(trackUrl == "path3"){
+  var TRACK = track.path3;
+  var REMOVE = track.toRemove3;
+} else if(trackUrl == "path4"){
+  var TRACK = track.path4;
+  var REMOVE = track.toRemove4;
+}
+
 const PITSTOP = track.pit;
 const MODEL = 'track2.glb';
 const CAR = 'car.glb';
@@ -52,6 +85,16 @@ dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5
 loader.setDRACOLoader( dracoLoader );
 loader.load(`../assets/${MODEL}`, function (gltf) {
   const model = gltf.scene;
+  let childRemove = []
+  model.traverse(function (child) {
+    if (REMOVE.includes(child.name)){
+      console.log(child.name)
+      childRemove.push(child);
+    }
+  });
+  childRemove.forEach((child) => {
+    child.removeFromParent();
+  });
   scene.add(model);
 });
 
