@@ -60,7 +60,6 @@ loader.load(`../assets/${MODEL}`, function (gltf) {
   let childRemove = []
   model.traverse(function (child) {
     if (toRemove.includes(child.name)){
-      console.log(child.name)
       childRemove.push(child);
     }
   });

@@ -69,7 +69,7 @@ camera.position.set(100, 330, 120);
 camera.lookAt(scene.position);
 
 // Setup lights
-const ambientLight = new THREE.AmbientLight(0x333333);
+const ambientLight = new THREE.AmbientLight(0xFFFFFF);
 scene.add(ambientLight);
 
 // Add a directional light
@@ -87,11 +87,17 @@ loader.load(`../assets/${MODEL}`, function (gltf) {
   const model = gltf.scene;
   let childRemove = []
   model.traverse(function (child) {
+    if(child.name == "1CONCRETE_red_road_0"){
+      child.material = new THREE.MeshStandardMaterial({ color: 'black'})
+    }
+    if(child.name == "1TARMAC_oval_road_0"){
+      child.material = new THREE.MeshStandardMaterial({ color: 0x56575A})
+    }
     if (REMOVE.includes(child.name)){
-      console.log(child.name)
       childRemove.push(child);
     }
   });
+
   childRemove.forEach((child) => {
     child.removeFromParent();
   });
@@ -563,6 +569,9 @@ function createYukaCar({ maxSpeed, pitSpeed, team, startPos, model, track, tyre 
   // Setup vehicle render component
   const loader1 = new GLTFLoader();
 
+  // Model object names for the 4 tyres
+  const tyreObj = ["imagetostl_mesh17","imagetostl_mesh80","imagetostl_mesh79","imagetostl_mesh81"]
+
   // Load the 3D model of the car
   loader1.load(`../assets/${model}`, function (glb) {
     const model = glb.scene;
@@ -572,6 +581,11 @@ function createYukaCar({ maxSpeed, pitSpeed, team, startPos, model, track, tyre 
         child.castShadow = true;
         child.receiveShadow = true;
         child.material = new THREE.MeshStandardMaterial({ color: team });
+        // Change the tyre 3D model to black
+        if(tyreObj.includes(child.name)){
+          child.material = new THREE.MeshStandardMaterial({ color: 'black'})
+        }
+
       }
     });
 
@@ -579,7 +593,7 @@ function createYukaCar({ maxSpeed, pitSpeed, team, startPos, model, track, tyre 
     scene.add(model);
     model.matrixAutoUpdate = false;
     vehicle.rotateTo(vehicle.path.current(), true);
-    vehicle.scale.set(0.8, 0.8, 0.8);
+    vehicle.scale.set(1, 1, 1);
     // Sync the vehicle with the model for rendering
     vehicle.setRenderComponent(model, sync);
   });
